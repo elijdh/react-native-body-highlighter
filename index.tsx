@@ -11,6 +11,7 @@ import { SvgFemaleWrapper } from "./components/SvgFemaleWrapper";
 
 export type Slug =
   | "abs"
+  | "abductors"
   | "adductors"
   | "ankles"
   | "biceps"
