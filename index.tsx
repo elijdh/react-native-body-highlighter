@@ -15,9 +15,12 @@ export type Slug =
   | "ankles"
   | "biceps"
   | "calves"
-  | "chest"
-  | "deltoids"
-  | "deltoids"
+  | "chest-upper"
+  | "chest-mid"
+  | "chest-lower"
+  | "deltoids-front"
+  | "deltoids-side"
+  | "deltoids-rear"
   | "feet"
   | "forearm"
   | "gluteal"
@@ -88,7 +91,7 @@ const Body = ({
   hiddenParts = [],
   defaultFill = "#3f3f3f",
   defaultStroke = "none",
-  defaultStrokeWidth = 0
+  defaultStrokeWidth = 0,
 }: BodyProps) => {
   const getPartStyles = useCallback(
     (bodyPart: ExtendedBodyPart): BodyPartStyles => {
@@ -99,18 +102,18 @@ const Body = ({
         strokeWidth: bodyPart.styles?.strokeWidth ?? defaultStrokeWidth,
       };
     },
-    [defaultFill, defaultStroke, defaultStrokeWidth]
+    [defaultFill, defaultStroke, defaultStrokeWidth],
   );
 
   const mergedBodyParts = useCallback(
     (dataSource: ReadonlyArray<BodyPart>) => {
       const filteredDataSource = dataSource.filter(
-        (part) => !hiddenParts.includes(part.slug!)
+        (part) => !hiddenParts.includes(part.slug!),
       );
 
       // Create a map of user data by slug for faster lookup
       const userDataMap = new Map<string, ExtendedBodyPart>();
-      data.forEach(userPart => {
+      data.forEach((userPart) => {
         if (userPart.slug) {
           userDataMap.set(userPart.slug, userPart);
         }
@@ -143,7 +146,7 @@ const Body = ({
         return merged;
       });
     },
-    [data, colors, hiddenParts]
+    [data, colors, hiddenParts],
   );
 
   const getColorToFill = (bodyPart: ExtendedBodyPart) => {
@@ -201,7 +204,9 @@ const Body = ({
             const isOnlyRight =
               data.find((d) => d.slug === bodyPart.slug)?.side === "right";
             const partStyles = getPartStyles(bodyPart);
-            const fillColor = isOnlyRight ? defaultFill : getColorToFill(bodyPart);
+            const fillColor = isOnlyRight
+              ? defaultFill
+              : getColorToFill(bodyPart);
 
             return (
               <Path
@@ -223,7 +228,9 @@ const Body = ({
             const isOnlyLeft =
               data.find((d) => d.slug === bodyPart.slug)?.side === "left";
             const partStyles = getPartStyles(bodyPart);
-            const fillColor = isOnlyLeft ? defaultFill : getColorToFill(bodyPart);
+            const fillColor = isOnlyLeft
+              ? defaultFill
+              : getColorToFill(bodyPart);
 
             return (
               <Path

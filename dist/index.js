@@ -42,7 +42,7 @@ const bodyFemaleFront_1 = require("./assets/bodyFemaleFront");
 const bodyFemaleBack_1 = require("./assets/bodyFemaleBack");
 const SvgFemaleWrapper_1 = require("./components/SvgFemaleWrapper");
 const comparison = (a, b) => a.slug === b.slug;
-const Body = ({ colors = ["#0984e3", "#74b9ff"], data, scale = 1, side = "front", gender = "male", onBodyPartPress, border = "#dfdfdf", disabledParts = [], hiddenParts = [], defaultFill = "#3f3f3f", defaultStroke = "none", defaultStrokeWidth = 0 }) => {
+const Body = ({ colors = ["#0984e3", "#74b9ff"], data, scale = 1, side = "front", gender = "male", onBodyPartPress, border = "#dfdfdf", disabledParts = [], hiddenParts = [], defaultFill = "#3f3f3f", defaultStroke = "none", defaultStrokeWidth = 0, }) => {
     const getPartStyles = (0, react_1.useCallback)((bodyPart) => {
         var _a, _b, _c, _d, _e, _f;
         // Per-part styles override global defaults
@@ -56,7 +56,7 @@ const Body = ({ colors = ["#0984e3", "#74b9ff"], data, scale = 1, side = "front"
         const filteredDataSource = dataSource.filter((part) => !hiddenParts.includes(part.slug));
         // Create a map of user data by slug for faster lookup
         const userDataMap = new Map();
-        data.forEach(userPart => {
+        data.forEach((userPart) => {
             if (userPart.slug) {
                 userDataMap.set(userPart.slug, userPart);
             }
@@ -114,7 +114,9 @@ const Body = ({ colors = ["#0984e3", "#74b9ff"], data, scale = 1, side = "front"
                     var _a;
                     const isOnlyRight = ((_a = data.find((d) => d.slug === bodyPart.slug)) === null || _a === void 0 ? void 0 : _a.side) === "right";
                     const partStyles = getPartStyles(bodyPart);
-                    const fillColor = isOnlyRight ? defaultFill : getColorToFill(bodyPart);
+                    const fillColor = isOnlyRight
+                        ? defaultFill
+                        : getColorToFill(bodyPart);
                     return (<react_native_svg_1.Path key={path} onPress={isPartDisabled(bodyPart.slug)
                             ? undefined
                             : () => onBodyPartPress === null || onBodyPartPress === void 0 ? void 0 : onBodyPartPress(bodyPart, "left")} id={bodyPart.slug} fill={fillColor !== null && fillColor !== void 0 ? fillColor : partStyles.fill} stroke={partStyles.stroke} strokeWidth={partStyles.strokeWidth} d={path}/>);
@@ -123,7 +125,9 @@ const Body = ({ colors = ["#0984e3", "#74b9ff"], data, scale = 1, side = "front"
                     var _a;
                     const isOnlyLeft = ((_a = data.find((d) => d.slug === bodyPart.slug)) === null || _a === void 0 ? void 0 : _a.side) === "left";
                     const partStyles = getPartStyles(bodyPart);
-                    const fillColor = isOnlyLeft ? defaultFill : getColorToFill(bodyPart);
+                    const fillColor = isOnlyLeft
+                        ? defaultFill
+                        : getColorToFill(bodyPart);
                     return (<react_native_svg_1.Path key={path} onPress={isPartDisabled(bodyPart.slug)
                             ? undefined
                             : () => onBodyPartPress === null || onBodyPartPress === void 0 ? void 0 : onBodyPartPress(bodyPart, "right")} id={bodyPart.slug} fill={fillColor !== null && fillColor !== void 0 ? fillColor : partStyles.fill} stroke={partStyles.stroke} strokeWidth={partStyles.strokeWidth} d={path}/>);

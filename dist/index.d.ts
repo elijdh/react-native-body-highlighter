@@ -1,5 +1,5 @@
 import React from "react";
-export type Slug = "abs" | "abductors" | "adductors" | "ankles" | "biceps" | "calves" | "chest" | "deltoids" | "deltoids" | "feet" | "forearm" | "gluteal" | "hamstring" | "hands" | "hair" | "head" | "knees" | "lower-back" | "neck" | "obliques" | "quadriceps" | "tibialis" | "trapezius" | "triceps" | "upper-back";
+export type Slug = "abs" | "adductors" | "ankles" | "biceps" | "calves" | "chest-upper" | "chest-mid" | "chest-lower" | "deltoids-front" | "deltoids-side" | "deltoids-rear" | "feet" | "forearm" | "gluteal" | "hamstring" | "hands" | "hair" | "head" | "knees" | "lower-back" | "neck" | "obliques" | "quadriceps" | "tibialis" | "trapezius" | "triceps" | "upper-back";
 export interface BodyPartStyles {
     fill?: string;
     stroke?: string;
@@ -34,5 +34,5 @@ export type BodyProps = {
     defaultStroke?: string;
     defaultStrokeWidth?: number;
 };
-declare const Body: ({ colors, data, scale, side, gender, onBodyPartPress, border, disabledParts, hiddenParts, defaultFill, defaultStroke, defaultStrokeWidth }: BodyProps) => React.JSX.Element;
+declare const Body: ({ colors, data, scale, side, gender, onBodyPartPress, border, disabledParts, hiddenParts, defaultFill, defaultStroke, defaultStrokeWidth, }: BodyProps) => React.JSX.Element;
 export default Body;
