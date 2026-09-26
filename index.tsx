@@ -30,6 +30,7 @@ export type Slug =
   | "hair"
   | "head"
   | "knees"
+  | "lats"
   | "lower-back"
   | "neck"
   | "obliques"
